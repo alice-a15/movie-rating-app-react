@@ -15,7 +15,8 @@ function App() {
         'Content-Type': 'application/json',
         'Authorization': 'Token 37f24b843df39714028a7840cc88b495684152a4'
       }
-    }).then( resp => resp.json())
+    })
+    .then( resp => resp.json())
     .then( resp => setMovie(resp))
     .catch( error => console.log(error))
   }, [])
