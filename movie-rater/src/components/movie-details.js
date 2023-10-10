@@ -6,7 +6,7 @@ function MovieDetails(props){
 
 	const [ highlighted, setHighlighted ] = useState(-1);
 
-	const mov = props.movie;
+	let mov = props.movie;
 
 	const highlightRate = high => evt => {
 		setHighlighted(high);
@@ -21,10 +21,22 @@ function MovieDetails(props){
     		},
             body: JSON.stringify({stars: rate + 1})
 		})
-		.then( resp => resp.json())
-		.then( resp => console.log(resp))
+		.then( () => getDetails())
 		.catch( error => console.log(error))
   	}
+
+    const getDetails = () => {
+        fetch(`http://127.0.0.1:8000/api/movies/${mov.id}/`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': 'Token 37f24b843df39714028a7840cc88b495684152a4'
+    		}
+		})
+		.then( resp => resp.json())
+		.then( resp => props.updateMovie(resp))
+		.catch( error => console.log(error))
+    }
 
 	return (
 		<React.Fragment>
