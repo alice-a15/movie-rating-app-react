@@ -6,6 +6,7 @@ function Auth() {
 
 	const [ username, setUsername ] = useState('');
 	const [ password, setPassword ] = useState('');
+	const [ isLoginView, setIsLoginView] = useState(true);
 
 	const [ token, setToken ] = useCookies(['mr-token'])
 
@@ -26,8 +27,15 @@ function Auth() {
 		}
 	}
 
+	const registerClicked = () => {
+		API.registerUser({username, password})
+		.then( () => loginClicked())
+		.catch(error => console.log(error))
+	}
+
 	return (
 		<div>
+			{isLoginView ? <h1>Login</h1> : <h1>Register</h1>}
 			<label htmlFor="username">Username</label>
 			<br />
 			<input 
@@ -47,7 +55,14 @@ function Auth() {
 				onChange={ evt => setPassword(evt.target.value)} 
 				onKeyUp={handleKeyUp} />
 			<br/>
-			<button type="submit" onClick={loginClicked}>Login</button>
+			{isLoginView ? 
+				<button type="submit" onClick={loginClicked}>Login</button> : 
+				<button type="submit" onClick={registerClicked}>Register</button>
+			}
+			{isLoginView ?
+				<p onClick={() => setIsLoginView(false)}>Not registered? Create an Account</p> :
+				<p onClick={() => setIsLoginView(true)}>Already registered? Sign In!</p>
+			}
 		</div>
 	)
 }
