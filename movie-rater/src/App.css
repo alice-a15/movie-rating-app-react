@@ -16,6 +16,25 @@
   grid-gap: 20px;
 }
 
+.fa-right-from-bracket {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+.fa-right-from-bracket:hover {
+  color: #E9C46A;
+}
+.fa-pen-to-square:hover {
+  cursor: pointer;
+  color: #E9C46A;
+}
+.fa-trash:hover {
+  cursor: pointer;
+  color: #E9C46A;
+}
+
+
 .list-container {
   width: auto;
   padding: 20px;

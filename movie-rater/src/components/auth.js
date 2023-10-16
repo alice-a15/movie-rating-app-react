@@ -79,7 +79,7 @@ function Auth() {
 							<span></span>
 							Login
 						</button>
-						<p>Don't have an account? <a onClick={() => setIsLoginView(false)} className="a-link">Signup</a></p>
+						<p>Don&apos; have an account? <a onClick={() => setIsLoginView(false)} className="a-link">Signup</a></p>
 					</>
 					:
 					<>
