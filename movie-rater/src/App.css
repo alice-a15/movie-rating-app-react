@@ -55,6 +55,7 @@
 
 .detail-container {
   width: auto;
+  height: fit-content;
   padding: 20px;
   background: rgba(0,0,0,0.5);
   box-sizing: border-box;
@@ -96,6 +97,7 @@
 }
 .form-container {
   width: auto;
+  height: fit-content;
   padding: 20px;
   background: rgba(0,0,0,0.5);
   box-sizing: border-box;

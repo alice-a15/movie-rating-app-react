@@ -57,7 +57,7 @@ function App() {
 
   const newMovie = () => {
     setEditedMovie({title: "", description: ""});
-    setSelectedMovie(null);
+    setSelectedMovie();
   }
 
   const movieCreated = movie => {
