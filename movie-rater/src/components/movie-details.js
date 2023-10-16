@@ -43,17 +43,20 @@ function MovieDetails(props){
     return (
         <React.Fragment>
             { mov ? (
-                <div>
-                    <h1>{mov.title}</h1>
+                <div className="detail-container">
+                    <h1>Movie Details</h1>
+                    <div className="movie-detail">
+                        <div className="title">{mov.title}</div>
+                        <div>
+                            <FontAwesomeIcon icon={faStar} className={mov.avg_rating > 0 ? "orange" : ""}/>
+                            <FontAwesomeIcon icon={faStar} className={mov.avg_rating > 1 ? "orange" : ""}/>
+                            <FontAwesomeIcon icon={faStar} className={mov.avg_rating > 2 ? "orange" : ""}/>
+                            <FontAwesomeIcon icon={faStar} className={mov.avg_rating > 3 ? "orange" : ""}/>
+                            <FontAwesomeIcon icon={faStar} className={mov.avg_rating > 4 ? "orange" : ""}/>
+                            ({mov.no_of_ratings})
+                        </div>
+                    </div>
                     <p>{mov.description}</p>
-                    <FontAwesomeIcon icon={faStar} className={mov.avg_rating > 0 ? "orange" : ""}/>
-                    <FontAwesomeIcon icon={faStar} className={mov.avg_rating > 1 ? "orange" : ""}/>
-                    <FontAwesomeIcon icon={faStar} className={mov.avg_rating > 2 ? "orange" : ""}/>
-                    <FontAwesomeIcon icon={faStar} className={mov.avg_rating > 3 ? "orange" : ""}/>
-                    <FontAwesomeIcon icon={faStar} className={mov.avg_rating > 4 ? "orange" : ""}/>
-
-                    ({mov.no_of_ratings})
-
                     <div className="rate-container">
                         <h2>Rate it</h2>
                         { [...Array(5)].map( (e, i) => {

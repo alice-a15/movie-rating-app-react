@@ -4,6 +4,8 @@ import MovieList from './components/movie-list';
 import MovieDetails from './components/movie-details';
 import MovieForm from './components/movie-form';
 import { useCookies } from 'react-cookie'; 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFilm } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
 
@@ -37,6 +39,7 @@ function App() {
   }
 
   const updatedMovie = movie => {
+    setEditedMovie(false);
     const newMovies = movies.map( mov => {
       if (mov.id === movie.id) {
         return movie;
@@ -44,6 +47,7 @@ function App() {
       return mov;
     })
     setMovies(newMovies)
+    setSelectedMovie(movie)
   }
 
   const editClicked = movie => {
@@ -69,7 +73,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Movie Rater</h1>
+        <h1>
+          <FontAwesomeIcon icon={faFilm}/>
+          <span>Movie Rater</span>
+        </h1>
       </header>
       <div className='layout'>
         <div>
@@ -79,7 +86,17 @@ function App() {
             editClicked={editClicked}
             removeClicked={removeClicked}
           />
-          <button onClick={ newMovie }>New Movie</button>          
+          <button 
+            className='btn' 
+            onClick={ newMovie } 
+            style={{
+              border:"1px solid #E9C46A", 
+              borderRadius:"10px",
+              marginLeft:"20px",
+            }}
+          >
+            New Movie
+          </button>          
         </div>
           <MovieDetails movie={selectedMovie} updateMovie={loadMovie}/>
           { editedMovie ? 

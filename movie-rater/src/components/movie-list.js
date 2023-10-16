@@ -23,13 +23,14 @@ function MovieList(props){
     }
 
     return (
-        <div>
+        <div className="list-container">
+            <h1>Movie List</h1>
             { props?.movies && Array.isArray(props.movies) && props.movies.map( movie => {
                 return (
                 <div key={movie.id} className="movie-item">
                     <h2 onClick={movieClicked(movie)}>{movie.title}</h2>
-                        <FontAwesomeIcon icon={faEdit} onClick={() => editClicked(movie)}/>
-                        <FontAwesomeIcon icon={faTrash} onClick={() => removeClicked(movie)}/>
+                    <FontAwesomeIcon icon={faEdit} onClick={() => editClicked(movie)} title="Edit"/>
+                    <FontAwesomeIcon icon={faTrash} onClick={() => removeClicked(movie)} title="Delete"/>
                 </div>
                 )
             })}

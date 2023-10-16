@@ -42,6 +42,8 @@ function Auth() {
 		}
 	}
 
+	const isDisabled = username.length === 0 || password === 0;
+
 	return (
 		<div className="App">
 			<div className="login-container">
@@ -70,7 +72,7 @@ function Auth() {
 							<label htmlFor="password">Password</label>
 						</div>
 						<br/><br/>
-						<button className="btn" type="submit" onClick={loginClicked}>
+						<button className="btn" type="submit" onClick={loginClicked} disabled={isDisabled}>
 							<span></span>
 							<span></span>
 							<span></span>
@@ -120,7 +122,7 @@ function Auth() {
 							<label htmlFor="confirmPassword">Confirm Password</label>
 						</div>
 						<br/><br/>
-						<button className="btn" type="submit" onClick={registerClicked}>
+						<button className="btn" type="submit" onClick={registerClicked} disabled={isDisabled}>
 							<span></span>
 							<span></span>
 							<span></span>
